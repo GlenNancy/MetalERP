@@ -1,0 +1,33 @@
+# Build
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# Publish
+publish/
+
+# EF Local
+*.db
+
+# Configurações locais
+appsettings.Development.json
+
+# Secrets
+secrets.json
+
+# Node
+node_modules/
+
+# Sistema
+.DS_Store
+Thumbs.db
