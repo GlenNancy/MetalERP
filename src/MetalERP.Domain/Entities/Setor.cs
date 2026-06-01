@@ -21,6 +21,9 @@ public class Setor
         string nome,
         string? telSetor)
     {
+        ArgumentException
+        .ThrowIfNullOrWhiteSpace(nome);
+
         return new Setor
         {
             Nome = nome,

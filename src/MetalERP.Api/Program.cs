@@ -5,6 +5,7 @@ using MetalERP.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using MetalERP.Infrastructure;
 using MetalERP.Api.Endpoints;
+using MetalERP.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddInfrastructure();
 
 var app = builder.Build();
+
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

@@ -7,6 +7,8 @@ public interface ISetorRepository
 
     Task<Setor?> GetByIdAsync(int id);
 
+    Task<Setor?> GetByIdReadOnlyAsync(int id);
+
     Task AddAsync(Setor setor);
 
     Task UpdateAsync(Setor setor);

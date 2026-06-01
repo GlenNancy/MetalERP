@@ -16,6 +16,7 @@ public class SetorRepository : ISetorRepository
     public async Task<List<Setor>> GetAllAsync()
     {
         return await _context.Setores
+            .AsNoTracking()
             .OrderBy(s => s.Nome)
             .ToListAsync();
     }
@@ -23,6 +24,13 @@ public class SetorRepository : ISetorRepository
     public async Task<Setor?> GetByIdAsync(int id)
     {
         return await _context.Setores
+            .FirstOrDefaultAsync(s => s.Id == id);
+    }
+
+    public async Task<Setor?> GetByIdReadOnlyAsync(int id)
+    {
+        return await _context.Setores
+            .AsNoTracking()
             .FirstOrDefaultAsync(s => s.Id == id);
     }
 
