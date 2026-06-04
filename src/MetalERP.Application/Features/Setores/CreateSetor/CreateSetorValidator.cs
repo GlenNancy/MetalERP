@@ -9,9 +9,14 @@ public class CreateSetorValidator
     {
         RuleFor(x => x.Nome)
             .NotEmpty()
-            .MaximumLength(150);
+            .WithMessage("O nome do setor é obrigatório.")
+            .MaximumLength(150)
+            .WithMessage("O nome do setor deve ter no máximo 150 caracteres.");
+            
 
         RuleFor(x => x.TelSetor)
-            .MaximumLength(20);
+            .MaximumLength(20)
+            .WithMessage("O telefone deve ter no máximo 20 caracteres.");
+            
     }
 }

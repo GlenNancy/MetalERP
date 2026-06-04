@@ -13,6 +13,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Usuario> Usuarios => Set<Usuario>();
     public DbSet<Setor> Setores => Set<Setor>();
+    public DbSet<Funcionario> Funcionarios => Set<Funcionario>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

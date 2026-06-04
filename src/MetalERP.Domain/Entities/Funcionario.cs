@@ -1,58 +1,58 @@
 namespace MetalERP.Domain.Entities;
 
-public class Usuario
+public class Funcionario
 {
     public int Id { get; private set; }
 
     public string Nome { get; private set; } = string.Empty;
 
-    public string Email { get; private set; } = string.Empty;
+    public string Codigo { get; private set; } = string.Empty;
 
-    public string Senha_Hash { get; private set; } = string.Empty;
+    public string? Apelido { get; private set; } = string.Empty;
 
     public int Setor_Id { get; private set; }
 
     public Setor Setor { get; private set; } = null!;
 
-    public bool Ativo { get; private set; }
+    public bool Ativo { get; private set; } = true;
 
     public DateTime Data_Criacao { get; private set; } // = DateTime.UtcNow;
 
-    private Usuario()
+    private Funcionario()
     {
     }
 
-    public static Usuario Create(
+    public static Funcionario Create(
         string nome,
-        string email,
-        string senhaHash,
+        string? apelido,
+        string codigo,
         int setor_Id)
     {
         ArgumentException
         .ThrowIfNullOrWhiteSpace(nome);
         ArgumentException
-        .ThrowIfNullOrWhiteSpace(email);
-        ArgumentException
-        .ThrowIfNullOrWhiteSpace(senhaHash);
+        .ThrowIfNullOrWhiteSpace(codigo);
 
-        return new Usuario
+        return new Funcionario
         {
             Nome = nome,
-            Email = email,
-            Senha_Hash = senhaHash,
-            Setor_Id = setor_Id,
-            Data_Criacao = DateTime.UtcNow
+            Apelido = apelido,
+            Codigo = codigo,
+            Data_Criacao = DateTime.UtcNow,
+            Setor_Id = setor_Id
         };
     }
 
     public void Atualizar(
         string nome,
-        string email,
-        string senhaHash)
+        string? apelido,
+        string codigo,
+        int setor_Id)
     {
         Nome = nome;
-        Email = email;
-        Senha_Hash = senhaHash;
+        Apelido = apelido;
+        Codigo = codigo;
+        Setor_Id = setor_Id;
     }
 
     public void Desativar()

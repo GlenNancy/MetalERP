@@ -13,6 +13,9 @@ public class Setor
     public ICollection<Usuario> Usuarios { get; private set; }
     = new List<Usuario>();
 
+    public ICollection<Funcionario> Funcionarios { get; private set; }
+    = new List<Funcionario>();
+
     private Setor()
     {
     }
@@ -33,7 +36,7 @@ public class Setor
 
     public void Atualizar(
         string nome,
-        string telSetor)
+        string? telSetor)
     {
         Nome = nome;
         Tel_Setor = telSetor;
@@ -42,5 +45,10 @@ public class Setor
     public void Desativar()
     {
         Ativo = false;
+    }
+
+    public void Ativar()
+    {
+        Ativo = true;
     }
 }
