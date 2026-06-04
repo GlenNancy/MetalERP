@@ -1,31 +1,31 @@
 using MediatR;
 using MetalERP.Application.Contracts;
 
-namespace MetalERP.Application.Features.Usuarios.GetUsuario;
+namespace MetalERP.Application.Features.Usuarios.GetUsuarioRead;
 
-public class GetUsuarioHandler
+public class GetUsuarioReadHandler
     : IRequestHandler<
-        GetUsuarioQuery,
-        GetUsuarioResponse?>
+        GetUsuarioReadQuery,
+        GetUsuarioReadResponse?>
 {
     private readonly IUsuarioRepository _repository;
 
-    public GetUsuarioHandler(
+    public GetUsuarioReadHandler(
         IUsuarioRepository repository)
     {
         _repository = repository;
     }
 
-     public async Task<GetUsuarioResponse?> Handle(
-        GetUsuarioQuery request,
+     public async Task<GetUsuarioReadResponse?> Handle(
+        GetUsuarioReadQuery request,
         CancellationToken cancellationToken)    {
         var usuario =
-            await _repository.GetByIdAsync(request.Id);
+            await _repository.GetByIdReadOnlyAsync(request.Id);
 
         if (usuario is null)
             return null;
 
-        return new GetUsuarioResponse(
+        return new GetUsuarioReadResponse(
             usuario.Id,
             usuario.Nome,
             usuario.Email,

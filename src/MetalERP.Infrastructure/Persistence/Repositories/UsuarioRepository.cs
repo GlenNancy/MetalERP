@@ -16,6 +16,7 @@ public class UsuarioRepository : IUsuarioRepository
     public async Task<List<Usuario>> GetAllAsync()
     {
         return await _context.Usuarios
+            .Include(u => u.Setor)
             .AsNoTracking()
             .OrderBy(u => u.Nome)
             .ToListAsync();

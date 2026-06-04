@@ -55,6 +55,12 @@ public class Usuario
         Senha_Hash = senhaHash;
     }
 
+    public void AtualizarSetor(
+        int setorId)
+    {
+        Setor_Id = setorId;
+    }
+
     public void Desativar()
     {
         Ativo = false;
